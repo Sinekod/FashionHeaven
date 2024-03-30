@@ -6,16 +6,36 @@ using System.Threading.Tasks;
 
 namespace FashionHeaven.Infrastructure.Data.Constants
 {
-    public class Constants
+    public static class Constants
     {
-        public class ProductCategoryConstants
+        public static class ProductCategoryConstants
         {
-            const int MaxLenghtCategoryName = 40;        
+          public const int MaxLenghtCategoryName = 40;        
         
         
         }
+        public static class ProductConstants 
+        {
+            public const int MaxLenghtProductName = 40;
+            public const int MaxLenghtDescriptionProduct = 1500;
+        
+        
+        }
+        public static class ColourConstants 
+        {
+            public const int MaxLenghtColourName = 50;
+        
+        }
+        public static class BrandConstants 
+        {
+            public const int MaxLenghtBrandName = 50;
 
+        }
+        public static class SizeConstants
+        {
+            public const int MaxLenghtSizeName = 50;
 
+        }
 
 
     }

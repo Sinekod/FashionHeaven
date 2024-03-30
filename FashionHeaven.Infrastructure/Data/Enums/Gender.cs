@@ -9,7 +9,7 @@ namespace FashionHeaven.Infrastructure.Data.Enums
     public  enum Gender
     {
         Men = 0,
-        Female = 1,
+        Women = 1,
         Kid = 2
 
     }
