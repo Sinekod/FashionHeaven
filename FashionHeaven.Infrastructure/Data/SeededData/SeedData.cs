@@ -117,15 +117,15 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             {
                 Id = 1,
                 UmgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646",
-                ProductItemId = 1,
-            
+                ProductItemId = JacketItem.Id,
+
             };
             PantsImage = new ProductImage()
-            { 
-              Id=2,
-              UmgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg",
-              ProductItemId = 2,
-              
+            {
+                Id = 2,
+                UmgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg",
+                ProductItemId = PantsItem.Id,
+
 
             };
 
@@ -133,54 +133,54 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             {
                 Id = 3,
                 UmgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg",
-                ProductItemId = 3,
+                ProductItemId = ShirtItem.Id,
 
             };
             JeansImage = new ProductImage()
             {
-                Id=4,
+                Id = 4,
                 UmgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818",
-                ProductItemId = 4,
+                ProductItemId = JeansItem.Id,
 
             };
-            
-        
-        
+
+
+
         }
         public void SeedProductVariations()
-        { 
+        {
             JacketVariation = new ProductVariation()
-            { 
-              Id = 1,
-              ProductItemId = 1,
-              SizeId = 2,
-              QuantityInStock = 50,
-            
+            {
+                Id = 1,
+                ProductItemId = JacketItem.Id,
+                SizeId = 2,
+                QuantityInStock = 50,
+
             };
             PantsVariation = new ProductVariation()
             {
-                Id= 2,
-                ProductItemId = 2,
+                Id = 2,
+                ProductItemId = PantsItem.Id,
                 SizeId = 3,
-                QuantityInStock= 30,    
+                QuantityInStock = 30,
 
             };
             ShirtVariation = new ProductVariation()
-              {
-                  Id = 3,
-                  ProductItemId = 3,
-                  SizeId = 1,
-                  QuantityInStock = 25,
+            {
+                Id = 3,
+                ProductItemId = ShirtItem.Id,
+                SizeId = 1,
+                QuantityInStock = 25,
 
-              };
+            };
             JeanVariation = new ProductVariation()
-            { 
-              Id = 4,
-              ProductItemId = 4,
-              SizeId= 4,
-               QuantityInStock = 80
-            
-            
+            {
+                Id = 4,
+                ProductItemId = JeansItem.Id,
+                SizeId = 4,
+                QuantityInStock = 80
+
+
             };
 
 
@@ -190,8 +190,8 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             JacketItem = new ProductItem()
             {
                 Id = 1,
-                ProductId = 1,
-                ColourId = 1,
+                ProductId = JacketName.Id,
+                ColourId = Red.Id,
                 OridinalPrice = 100,
                 SalePrice = 80,
 
@@ -199,7 +199,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             PantsItem = new ProductItem()
             {
                 Id = 2,
-                ProductId = 2,
+                ProductId = PantsName.Id,
                 ColourId = 2,
                 OridinalPrice = 50,
                 SalePrice = 30,
@@ -209,16 +209,16 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
             ShirtItem = new ProductItem()
             {
-                Id  = 3,
-                ProductId = 3,
+                Id = 3,
+                ProductId = ShirtName.Id,
                 ColourId = 3,
                 OridinalPrice = 30,
-                SalePrice= 20,
+                SalePrice = 20,
             };
-            JeansItem= new ProductItem()
+            JeansItem = new ProductItem()
             {
                 Id = 4,
-                ProductId = 4,
+                ProductId = JeansName.Id,
                 ColourId = 5,
                 OridinalPrice = 120,
                 SalePrice = 90,
@@ -235,7 +235,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Jacket = new ProductCategory
             {
                 Id = 1,
-                GenderId = 1,
+                GenderId = Men.Id,
                 CategoryName = "Jacket",
                 SizeCategoryId = 3,
 
@@ -244,7 +244,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Pants = new ProductCategory
             {
                 Id = 2,
-                GenderId = 2,
+                GenderId = Women.Id,
                 CategoryName = "Pants",
                 SizeCategoryId = 2,
 
@@ -253,7 +253,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Shirt = new ProductCategory
             {
                 Id = 3,
-                GenderId = 1,
+                GenderId = Men.Id,
                 CategoryName = "Shirt",
                 SizeCategoryId = 4,
 
@@ -262,7 +262,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Jeans = new ProductCategory
             {
                 Id = 4,
-                GenderId = 3,
+                GenderId = Kid.Id,
                 CategoryName = "Jeans",
                 SizeCategoryId = 1,
 
@@ -442,25 +442,25 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 1,
                 BrandName = "Nike"
             };
-             Adidas = new Brand()
+            Adidas = new Brand()
             {
                 Id = 2,
                 BrandName = "Adidas"
             };
 
-             Puma = new Brand()
+            Puma = new Brand()
             {
                 Id = 3,
                 BrandName = "Puma"
             };
 
-             Reebok = new Brand()
+            Reebok = new Brand()
             {
                 Id = 4,
                 BrandName = "Reebok"
             };
 
-             NewBalance = new Brand()  
+            NewBalance = new Brand()
             {
                 Id = 5,
                 BrandName = "New Balance"

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FashionHeaven.Core\FashionHeaven.Core.csproj" />
+    <ProjectReference Include="..\FashionHeaven.Infrastructure\FashionHeaven.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

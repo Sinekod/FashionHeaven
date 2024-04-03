@@ -2,12 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 
 using FashionHeaven.Infrastructure.Data;
+using FashionHeaven.Core.Contracts;
+using FashionHeaven.Core.Services;
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtension
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IProductService,ProductService>();
             return services;
         }
 
@@ -16,7 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
             var connectionString = config.GetConnectionString("DefaultConnection");
             services.AddDbContext<FashionHeavenContext>(options =>
                 options.UseSqlServer(connectionString));
-
+            
 
             return services;
         }
