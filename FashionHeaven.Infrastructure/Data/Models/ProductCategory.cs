@@ -14,8 +14,6 @@ namespace FashionHeaven.Infrastructure.Data.Models
         [MaxLength(MaxLenghtCategoryName)]
         public string CategoryName { get; set; } = string.Empty;
 
-        public int SizeCategoryId { get; set; }
-        [ForeignKey(nameof(SizeCategoryId))]
-        public SizeCategory SizeCategory { get; set; } = null!;
+  
     }
 }

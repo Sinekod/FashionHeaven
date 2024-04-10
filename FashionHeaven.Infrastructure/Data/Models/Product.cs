@@ -15,9 +15,14 @@ namespace FashionHeaven.Infrastructure.Data.Models
         public int BrandId { get; set; }
         [ForeignKey(nameof(BrandId))]
         public Brand Brand { get; set; } = null!;
+
+        public int CategoryId { get; set; }
+
         [ForeignKey(nameof(CategoryId))]
         public ProductCategory Category { get; set; } = null!;
 
-        public int CategoryId { get; set; } 
+       
+
+
     }
 }

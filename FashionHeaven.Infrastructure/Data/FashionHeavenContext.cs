@@ -22,8 +22,7 @@ namespace FashionHeaven.Infrastructure.Data
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new ProductGenderConfiguration());
             builder.ApplyConfiguration(new ProductItemConfiguration());
-            builder.ApplyConfiguration(new ProductVariationConfiguration());
-            builder.ApplyConfiguration(new SizeCategoryConfiguration());
+     
             builder.ApplyConfiguration(new SizeConfiguration());
             builder.ApplyConfiguration(new ProductImageConfiguration());
             base.OnModelCreating(builder);
@@ -36,10 +35,9 @@ namespace FashionHeaven.Infrastructure.Data
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductItem> ProductItems { get; set; }
         public DbSet<ProductGender> ProductGenders { get; set; }
-        public DbSet<ProductVariation> ProductVariations { get; set; }
+       
         public DbSet<Size> Sizes { get; set; }
-        public DbSet<SizeCategory> SizeCategories { get; set; }
-
+       
         public DbSet<ProductImage> ProductImages { get; set; }
 
 

@@ -16,11 +16,9 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             SeedColours();
             SeedProductGender();
             SedSize();
-            SizeCategorySeed();
             ProductSeed();
             SeedProductCategory();
             SeedProductItem();
-            SeedProductVariations();
             SeedImageProduct();
         }
 
@@ -55,14 +53,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         public ProductGender Kid { get; set; }
 
-        //Size Category
-        public SizeCategory SmallJeans { get; set; }
-
-        public SizeCategory MediumPants { get; set; }
-
-        public SizeCategory LargeJacket { get; set; }
-
-        public SizeCategory ExtraLargeShirt { get; set; }
+ 
 
         //Product
 
@@ -94,13 +85,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         public ProductItem JeansItem { get; set; }
 
-        //Product variations
-
-        public ProductVariation JeanVariation { get; set; }
-        public ProductVariation PantsVariation { get; set; }
-
-        public ProductVariation ShirtVariation { get; set; }
-        public ProductVariation JacketVariation { get; set; }
+  
         //Product image
         public ProductImage JacketImage { get; set; }
 
@@ -144,47 +129,10 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
             };
 
-
-
+            
         }
-        public void SeedProductVariations()
-        {
-            JacketVariation = new ProductVariation()
-            {
-                Id = 1,
-                ProductItemId = JacketItem.Id,
-                SizeId = 2,
-                QuantityInStock = 50,
-
-            };
-            PantsVariation = new ProductVariation()
-            {
-                Id = 2,
-                ProductItemId = PantsItem.Id,
-                SizeId = 3,
-                QuantityInStock = 30,
-
-            };
-            ShirtVariation = new ProductVariation()
-            {
-                Id = 3,
-                ProductItemId = ShirtItem.Id,
-                SizeId = 1,
-                QuantityInStock = 25,
-
-            };
-            JeanVariation = new ProductVariation()
-            {
-                Id = 4,
-                ProductItemId = JeansItem.Id,
-                SizeId = 4,
-                QuantityInStock = 80
-
-
-            };
-
-
-        }
+      
+        
         public void SeedProductItem()
         {
             JacketItem = new ProductItem()
@@ -194,7 +142,8 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 ColourId = Red.Id,
                 OridinalPrice = 100,
                 SalePrice = 80,
-
+                SizeId = S.Id,
+                QuantityInStock = 50
             };
             PantsItem = new ProductItem()
             {
@@ -203,7 +152,8 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 ColourId = 2,
                 OridinalPrice = 50,
                 SalePrice = 30,
-
+                SizeId = M.Id,
+                QuantityInStock = 50
             };
 
 
@@ -214,6 +164,8 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 ColourId = 3,
                 OridinalPrice = 30,
                 SalePrice = 20,
+                SizeId = L.Id,
+                QuantityInStock = 50
             };
             JeansItem = new ProductItem()
             {
@@ -222,10 +174,10 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 ColourId = 5,
                 OridinalPrice = 120,
                 SalePrice = 90,
+                SizeId = XL.Id,
+                QuantityInStock = 50
 
             };
-
-
 
         }
 
@@ -237,7 +189,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 1,
                 GenderId = Men.Id,
                 CategoryName = "Jacket",
-                SizeCategoryId = 3,
+               
 
             };
 
@@ -246,7 +198,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 2,
                 GenderId = Women.Id,
                 CategoryName = "Pants",
-                SizeCategoryId = 2,
+           
 
             };
 
@@ -255,7 +207,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 3,
                 GenderId = Men.Id,
                 CategoryName = "Shirt",
-                SizeCategoryId = 4,
+    
 
             };
 
@@ -264,7 +216,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 4,
                 GenderId = Kid.Id,
                 CategoryName = "Jeans",
-                SizeCategoryId = 1,
+                
 
             };
 
@@ -312,44 +264,14 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         }
 
-        public void SizeCategorySeed()
-        {
-            SmallJeans = new SizeCategory()
-            {
-                Id = 1,
-                CategoryName = "SmallJean"
-
-            };
-
-            MediumPants = new SizeCategory()
-            {
-                Id = 2,
-                CategoryName = "MediumPants"
-            };
-
-            LargeJacket = new SizeCategory()
-            {
-                Id = 3,
-                CategoryName = "LargeJacket"
-            };
-
-
-            ExtraLargeShirt = new SizeCategory()
-            {
-                Id = 4,
-                CategoryName = "ExtraLargeShirt"
-
-
-            };
-
-        }
+       
         public void SedSize()
         {
             S = new Size()
             {
                 Id = 1,
                 SizeName = "Small",
-                SizeCategoryId = 1,
+               
 
             };
 
@@ -357,21 +279,21 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             {
                 Id = 2,
                 SizeName = "Medium",
-                SizeCategoryId = 2,
+               
             };
 
             L = new Size()
             {
                 Id = 3,
                 SizeName = "Large",
-                SizeCategoryId = 3,
+                
             };
 
             XL = new Size()
             {
                 Id = 4,
                 SizeName = "ExtraLarge",
-                SizeCategoryId = 4,
+              
 
             };
 

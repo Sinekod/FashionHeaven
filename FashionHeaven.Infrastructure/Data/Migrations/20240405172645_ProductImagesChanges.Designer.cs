@@ -4,6 +4,7 @@ using FashionHeaven.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FashionHeaven.Data.Migrations
 {
     [DbContext(typeof(FashionHeavenContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240405172645_ProductImagesChanges")]
+    partial class ProductImagesChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -278,7 +280,7 @@ namespace FashionHeaven.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ProductItemId")
+                    b.Property<int>("ProductVariationId")
                         .HasColumnType("int");
 
                     b.Property<string>("UmgUrl")
@@ -287,7 +289,7 @@ namespace FashionHeaven.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductItemId");
+                    b.HasIndex("ProductVariationId");
 
                     b.ToTable("ProductImages");
 
@@ -295,25 +297,25 @@ namespace FashionHeaven.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ProductItemId = 1,
+                            ProductVariationId = 1,
                             UmgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646"
                         },
                         new
                         {
                             Id = 2,
-                            ProductItemId = 2,
+                            ProductVariationId = 2,
                             UmgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg"
                         },
                         new
                         {
                             Id = 3,
-                            ProductItemId = 3,
+                            ProductVariationId = 3,
                             UmgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg"
                         },
                         new
                         {
                             Id = 4,
-                            ProductItemId = 4,
+                            ProductVariationId = 4,
                             UmgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818"
                         });
                 });
@@ -767,13 +769,13 @@ namespace FashionHeaven.Data.Migrations
 
             modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductImage", b =>
                 {
-                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.ProductItem", "ProductItem")
+                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.ProductVariation", "ProductVariation")
                         .WithMany()
-                        .HasForeignKey("ProductItemId")
+                        .HasForeignKey("ProductVariationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductItem");
+                    b.Navigation("ProductVariation");
                 });
 
             modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductItem", b =>
