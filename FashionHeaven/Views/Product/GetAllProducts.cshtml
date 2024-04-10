@@ -1,17 +1,28 @@
 ﻿
 @model IEnumerable<ProductViewModel>
+@inject IProductService products;
+@Html.RenderPartialAsync("_MenuFilter",await products.ShowAllCategoryNamesAsync());
 
-@{
-   
-}
-@foreach (var product in Model)
+<a type="button" class="btn btn-primary" asp-controller="Product" asp-action="RemoveFilter">Remove Filters</a>
+
+@if (@Model.Any())
 {
-    <div class="card" style="width: 18rem;">
-        <img src="@product.ImageUrl" class="card-img-top" alt="Imah edna mq4ta">
-        <div class="card-body">
-            <h5 class="card-title">@product.ProductName</h5>
-            <p class="card-text">@product.ProductPrice</p>
-           
+    @foreach (var product in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="@product.ImageUrl" class="card-img-top" alt="Imah edna mq4ta">
+            <div class="card-body">
+                <h5 class="card-title">@product.ProductName</h5>
+                <p class="card-text">@product.ProductPrice</p>
+
+            </div>
         </div>
-    </div>
-}    
+    }
+    
+
+
+
+
+}
+
+

@@ -1,10 +1,5 @@
 ﻿using FashionHeaven.Core.Contracts;
-using FashionHeaven.Core.Models;
-using FashionHeaven.Core.Services;
-using FashionHeaven.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 
 namespace FashionHeaven.Controllers
 {
@@ -18,13 +13,28 @@ namespace FashionHeaven.Controllers
             productService = _productService;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<IActionResult> GetAllProductsAsync(int genderid)
         {
-            var products = await productService.ShowAllProducts();
-          
-            return View(products);
-        }
+             var products = await productService.ShowAllProductsAsync(genderid);
+             HttpContext.Session.SetInt32("ProductGenderId", genderid);
 
+            return View(products);
+            
+        }
+        
+        public async Task<IActionResult> Filter(string? categoryName,string? colourName,string? sizeName,int? genderId)
+        {
+            genderId = HttpContext.Session.GetInt32("ProductGenderId");
+            var products = await productService.FilterProducts(categoryName, colourName, sizeName,genderId);
+         
+            return View("GetAllProducts",products);
+        }
+        [HttpGet]
+        public async Task<IActionResult> RemoveFilter()
+        {
+            return  RedirectToAction("GetAllProducts");
+        
+        }
 
     }
 }

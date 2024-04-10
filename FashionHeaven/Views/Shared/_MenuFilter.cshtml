@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CategoriesViewModel>
+<form asp-controller="Product" asp-action="Filter" method="post">
+    <label for="cars">Choose a category:</label>
+    <select name="categoryName" id="cars">
+     @foreach (var category in Model)
+        {
+            <option value="@category.CategoryName">@category.CategoryName</option>
+        }
+        
+    </select>
+    <label for="colours">Choose a colour:</label>
+    <select name="colourName" id="colours">
+        @foreach (var category in Model)
+        {
+            <option value="@category.ColourName">@category.ColourName</option>
+        }
+
+    </select>
+    <label for="sizes">Choose a Size:</label>
+    <select name="sizeName" id="sizes">
+        @foreach (var category in Model)
+        {
+            <option value="@category.SizeName">@category.SizeName</option>
+        }
+
+    </select>
+    <br><br>
+    <input type="submit" value="Filter Products">
+</form>

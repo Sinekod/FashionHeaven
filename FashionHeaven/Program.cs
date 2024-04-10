@@ -10,6 +10,7 @@ builder.Services.AddApplicationIdentity(builder.Configuration);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddApplicationServices();
+builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -31,6 +32,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

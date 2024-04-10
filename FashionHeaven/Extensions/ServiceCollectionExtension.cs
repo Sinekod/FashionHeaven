@@ -11,6 +11,13 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IProductService,ProductService>();
+            services.AddSession(options=>
+            {
+                options.Cookie.Name = "GenderId";
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+
+            }) ;
             return services;
         }
 
