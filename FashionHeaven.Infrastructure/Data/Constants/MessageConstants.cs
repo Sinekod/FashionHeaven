@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FashionHeaven.Infrastructure.Data.Enums
+namespace FashionHeaven.Infrastructure.Data.Constants
 {
-    public  enum Gender
+    internal class MessageConstants
     {
-        Men = 0,
-        Women = 1,
-        Kid = 2
 
     }
 }
-    

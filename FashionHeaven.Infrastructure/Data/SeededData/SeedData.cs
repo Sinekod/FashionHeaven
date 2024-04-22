@@ -19,8 +19,16 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             ProductSeed();
             SeedProductCategory();
             SeedProductItem();
-            SeedImageProduct();
+            
+            SeedProductItemSizeColour();
         }
+
+        //ProductItemSizeColour
+        public ProductItemSizeColours Product1 { get; set; }
+        public ProductItemSizeColours Product2 { get; set; }
+        public ProductItemSizeColours Product3 { get; set; }
+
+        public ProductItemSizeColours Product4 { get; set; }
 
         //Brands
         public Brand Nike { get; set; }
@@ -53,7 +61,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         public ProductGender Kid { get; set; }
 
- 
+
 
         //Product
 
@@ -85,74 +93,69 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         public ProductItem JeansItem { get; set; }
 
-  
-        //Product image
-        public ProductImage JacketImage { get; set; }
 
-        public ProductImage PantsImage { get; set; }
-
-        public ProductImage ShirtImage { get; set; }
-
-        public ProductImage JeansImage { get; set; }
-
-
-        public void SeedImageProduct()
-        {
-            JacketImage = new ProductImage()
-            {
-                Id = 1,
-                UmgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646",
-                ProductItemId = JacketItem.Id,
-
-            };
-            PantsImage = new ProductImage()
-            {
-                Id = 2,
-                UmgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg",
-                ProductItemId = PantsItem.Id,
-
-
-            };
-
-            ShirtImage = new ProductImage()
-            {
-                Id = 3,
-                UmgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg",
-                ProductItemId = ShirtItem.Id,
-
-            };
-            JeansImage = new ProductImage()
-            {
-                Id = 4,
-                UmgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818",
-                ProductItemId = JeansItem.Id,
-
-            };
-
-            
-        }
-      
         
+
+        public void SeedProductItemSizeColour()
+        {
+            Product1 = new ProductItemSizeColours()
+            {
+                ProductItemId = JacketItem.Id,
+                ColourId = Red.Id,
+                SizeId = S.Id
+
+
+            };
+            Product2 = new ProductItemSizeColours()
+            {
+                ProductItemId = PantsItem.Id,
+                ColourId = Blue.Id,
+                SizeId = M.Id
+
+
+            };
+            Product3 = new ProductItemSizeColours()
+            {
+                ProductItemId = ShirtItem.Id,
+                ColourId = Green.Id,
+                SizeId = L.Id
+
+
+            };
+            Product4 = new ProductItemSizeColours()
+            {
+                ProductItemId = JeansItem.Id,
+                ColourId = Black.Id,
+                SizeId = XL.Id
+
+
+            };
+
+
+        }
+
+       
+
         public void SeedProductItem()
         {
             JacketItem = new ProductItem()
             {
                 Id = 1,
                 ProductId = JacketName.Id,
-                ColourId = Red.Id,
+                
                 OridinalPrice = 100,
                 SalePrice = 80,
-                SizeId = S.Id,
+                ImgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646",
                 QuantityInStock = 50
             };
             PantsItem = new ProductItem()
             {
                 Id = 2,
                 ProductId = PantsName.Id,
-                ColourId = 2,
+               
                 OridinalPrice = 50,
                 SalePrice = 30,
-                SizeId = M.Id,
+                ImgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg",
                 QuantityInStock = 50
             };
 
@@ -161,20 +164,20 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             {
                 Id = 3,
                 ProductId = ShirtName.Id,
-                ColourId = 3,
+             
                 OridinalPrice = 30,
                 SalePrice = 20,
-                SizeId = L.Id,
+                ImgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg",
                 QuantityInStock = 50
             };
             JeansItem = new ProductItem()
             {
                 Id = 4,
                 ProductId = JeansName.Id,
-                ColourId = 5,
+            
                 OridinalPrice = 120,
                 SalePrice = 90,
-                SizeId = XL.Id,
+                ImgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818",
                 QuantityInStock = 50
 
             };
@@ -189,7 +192,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 1,
                 GenderId = Men.Id,
                 CategoryName = "Jacket",
-               
+
 
             };
 
@@ -198,7 +201,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 2,
                 GenderId = Women.Id,
                 CategoryName = "Pants",
-           
+
 
             };
 
@@ -207,7 +210,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 3,
                 GenderId = Men.Id,
                 CategoryName = "Shirt",
-    
+
 
             };
 
@@ -216,7 +219,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
                 Id = 4,
                 GenderId = Kid.Id,
                 CategoryName = "Jeans",
-                
+
 
             };
 
@@ -264,14 +267,14 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
 
         }
 
-       
+
         public void SedSize()
         {
             S = new Size()
             {
                 Id = 1,
                 SizeName = "Small",
-               
+
 
             };
 
@@ -279,21 +282,21 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             {
                 Id = 2,
                 SizeName = "Medium",
-               
+
             };
 
             L = new Size()
             {
                 Id = 3,
                 SizeName = "Large",
-                
+
             };
 
             XL = new Size()
             {
                 Id = 4,
                 SizeName = "ExtraLarge",
-              
+
 
             };
 
@@ -303,14 +306,14 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Men = new ProductGender()
             {
                 Id = 1,
-                GenderName = Enums.Gender.Men
+                GenderName = "Men"
 
             };
 
             Women = new ProductGender()
             {
                 Id = 2,
-                GenderName = Enums.Gender.Women
+                GenderName = "Women"
 
 
             };
@@ -318,7 +321,7 @@ namespace FashionHeaven.Infrastructure.Data.SeededData
             Kid = new ProductGender()
             {
                 Id = 3,
-                GenderName = Enums.Gender.Kid
+                GenderName = "Kids"
             };
 
 

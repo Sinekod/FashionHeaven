@@ -8,6 +8,13 @@ namespace FashionHeaven.Infrastructure.Data.Constants
 {
     public static class Constants
     {
+
+        public static class ApplicationUserConstants
+        {
+            public const int MaxLenghtUserName = 20;
+            public const int MinLenghtUserName = 4;
+        }
+
         public static class ProductCategoryConstants
         {
           public const int MaxLenghtCategoryName = 40;        

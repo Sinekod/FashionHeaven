@@ -1,0 +1,90 @@
+﻿@model DescriptionProductViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="pd-wrap">
+        <div class="container">
+            <div class="heading-section">
+                <h2>Product Details</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="item">
+                        <div class="product-image">
+                            <img src="@Model.ImgUrl" style="max-width: 100%; height: auto;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-dtl">
+                        <div class="product-info">
+                            <div class="product-name">Variable Product</div>
+                            <div class="product-price-discount">
+                                <span>@Model.Price</span>
+                            </div>
+                            <p>@Model.Brand</p>
+                            <p>@Model.Description</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label asp-for="@Model.SizeId" class="form-label-add-edit">Select Size</label>
+                                    <select asp-for="@Model.SizeId" class="form-control" aria-required="true">
+                                        <option disabled selected value="">Select Size...</option>
+                                        @foreach (var size in Model.Sizes)
+                                        {
+                                            <option value="@size.Id">@size.SizeName</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.SizeId" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label asp-for="@Model.ColourId" class="form-label-add-edit">Select Colour</label>
+                                    <select asp-for="@Model.ColourId" class="form-control" aria-required="true">
+                                        <option disabled selected value="">Select Colour...</option>
+                                        @foreach (var colour in Model.Colours)
+                                        {
+                                            <option value="@colour.Id">@colour.ColourName</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="@Model.ColourId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="product-count">
+                                <label for="size">Quantity</label>
+                                <form action="#" class="display-flex">
+                                    
+                                    <input type="text" name="quantity" value="1" class="qty">
+                                   
+                                </form>
+                                <a href="#" class="round-black-btn">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+        <!-- Any additional script specific to this view can be added here -->
+        <script src="js/cart.js"></script>
+    }
+</body>
+</html>

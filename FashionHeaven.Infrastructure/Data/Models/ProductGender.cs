@@ -1,4 +1,4 @@
-﻿using FashionHeaven.Infrastructure.Data.Enums;
+﻿
 
 namespace FashionHeaven.Infrastructure.Data.Models
 {
@@ -6,8 +6,8 @@ namespace FashionHeaven.Infrastructure.Data.Models
     {
         public int Id { get; set; }
 
-        public Gender GenderName { get; set; } 
+        public string GenderName { get; set; } = string.Empty;
 
-
+  
     }
 }

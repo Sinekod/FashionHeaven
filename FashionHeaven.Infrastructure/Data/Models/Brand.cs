@@ -8,7 +8,7 @@ namespace FashionHeaven.Infrastructure.Data.Models
         [MaxLength(MaxLenghtBrandName)]
         public string BrandName { get; set; } = string.Empty;
 
-       
+
 
     }
 }

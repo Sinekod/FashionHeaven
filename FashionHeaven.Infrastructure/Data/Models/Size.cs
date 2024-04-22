@@ -10,5 +10,7 @@ namespace FashionHeaven.Infrastructure.Data.Models
         [MaxLength(MaxLenghtSizeName)]
         public string SizeName { get; set; } = string.Empty;
 
+        public ICollection<ProductItemSizeColours> Products { get; set; } = new List<ProductItemSizeColours>();
+
     }
 }

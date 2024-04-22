@@ -14,6 +14,5 @@ namespace FashionHeaven.Infrastructure.Data.Models
         [MaxLength(MaxLenghtCategoryName)]
         public string CategoryName { get; set; } = string.Empty;
 
-  
     }
 }

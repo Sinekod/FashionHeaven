@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using FashionHeaven.Infrastructure.Data;
 using FashionHeaven.Core.Contracts;
 using FashionHeaven.Core.Services;
+using FashionHeaven.Infrastructure.Data.Models;
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtension
@@ -34,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration config)
         {
             services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<ApplicationUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.Password.RequireNonAlphanumeric = false;

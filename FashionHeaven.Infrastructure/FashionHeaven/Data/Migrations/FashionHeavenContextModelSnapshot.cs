@@ -236,8 +236,9 @@ namespace FashionHeaven.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("GenderName")
-                        .HasColumnType("int");
+                    b.Property<string>("GenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -247,65 +248,17 @@ namespace FashionHeaven.Data.Migrations
                         new
                         {
                             Id = 3,
-                            GenderName = 2
+                            GenderName = "Kids"
                         },
                         new
                         {
                             Id = 1,
-                            GenderName = 0
+                            GenderName = "Men"
                         },
                         new
                         {
                             Id = 2,
-                            GenderName = 1
-                        });
-                });
-
-            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ProductItemId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UmgUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductItemId");
-
-                    b.ToTable("ProductImages");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ProductItemId = 1,
-                            UmgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ProductItemId = 2,
-                            UmgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ProductItemId = 3,
-                            UmgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ProductItemId = 4,
-                            UmgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818"
+                            GenderName = "Women"
                         });
                 });
 
@@ -317,8 +270,9 @@ namespace FashionHeaven.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ColourId")
-                        .HasColumnType("int");
+                    b.Property<string>("ImgUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("OridinalPrice")
                         .HasColumnType("decimal(18,2)");
@@ -332,16 +286,9 @@ namespace FashionHeaven.Data.Migrations
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("SizeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ColourId");
-
                     b.HasIndex("ProductId");
-
-                    b.HasIndex("SizeId");
 
                     b.ToTable("ProductItems");
 
@@ -349,42 +296,84 @@ namespace FashionHeaven.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ColourId = 1,
+                            ImgUrl = "https://www.asphaltgold.com/cdn/shop/files/e28c112df2824d87e6d428611d0d7b2dfb59d2c0_FB7368_657_Nike_Club_Puffer_Jacket_University_Red_White_os_1_1200x1200.jpg?v=1707749646",
                             OridinalPrice = 100m,
                             ProductId = 1,
                             QuantityInStock = 50,
-                            SalePrice = 80m,
-                            SizeId = 1
+                            SalePrice = 80m
                         },
                         new
                         {
                             Id = 2,
-                            ColourId = 2,
+                            ImgUrl = "https://static.ftshp.digital/img/p/1/0/7/2/5/7/3/1072573-full_product.jpg",
                             OridinalPrice = 50m,
                             ProductId = 2,
                             QuantityInStock = 50,
-                            SalePrice = 30m,
-                            SizeId = 2
+                            SalePrice = 30m
                         },
                         new
                         {
                             Id = 4,
-                            ColourId = 5,
+                            ImgUrl = "https://images.hugoboss.com/is/image/boss/hbeu50501329_015_100?$re_fullPageZoom$&qlt=85&fit=crop,1&align=1,1&lastModified=1705957483000&wid=1200&hei=1818",
                             OridinalPrice = 120m,
                             ProductId = 3,
                             QuantityInStock = 50,
-                            SalePrice = 90m,
-                            SizeId = 4
+                            SalePrice = 90m
                         },
                         new
                         {
                             Id = 3,
-                            ColourId = 3,
+                            ImgUrl = "https://i.ebayimg.com/images/g/gq4AAOSwj29i9Hmg/s-l1600.jpg",
                             OridinalPrice = 30m,
                             ProductId = 4,
                             QuantityInStock = 50,
-                            SalePrice = 20m,
-                            SizeId = 3
+                            SalePrice = 20m
+                        });
+                });
+
+            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductItemSizeColours", b =>
+                {
+                    b.Property<int>("ProductItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ColourId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductItemId", "SizeId", "ColourId");
+
+                    b.HasIndex("ColourId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductsSizesColours");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductItemId = 1,
+                            SizeId = 1,
+                            ColourId = 1
+                        },
+                        new
+                        {
+                            ProductItemId = 2,
+                            SizeId = 2,
+                            ColourId = 2
+                        },
+                        new
+                        {
+                            ProductItemId = 3,
+                            SizeId = 3,
+                            ColourId = 3
+                        },
+                        new
+                        {
+                            ProductItemId = 4,
+                            SizeId = 4,
+                            ColourId = 5
                         });
                 });
 
@@ -660,18 +649,18 @@ namespace FashionHeaven.Data.Migrations
                     b.Navigation("ProductGender");
                 });
 
-            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductImage", b =>
+            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductItem", b =>
                 {
-                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.ProductItem", "ProductItem")
+                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductItemId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProductItem");
+                    b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductItem", b =>
+            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.ProductItemSizeColours", b =>
                 {
                     b.HasOne("FashionHeaven.Infrastructure.Data.Models.Colour", "Colour")
                         .WithMany()
@@ -679,23 +668,23 @@ namespace FashionHeaven.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.Product", "Product")
+                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.ProductItem", "ProductItem")
                         .WithMany()
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProductItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.Size", "SizeName")
-                        .WithMany()
+                    b.HasOne("FashionHeaven.Infrastructure.Data.Models.Size", "Size")
+                        .WithMany("Products")
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Colour");
 
-                    b.Navigation("Product");
+                    b.Navigation("ProductItem");
 
-                    b.Navigation("SizeName");
+                    b.Navigation("Size");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -747,6 +736,11 @@ namespace FashionHeaven.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("FashionHeaven.Infrastructure.Data.Models.Size", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

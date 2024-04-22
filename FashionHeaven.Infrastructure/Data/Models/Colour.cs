@@ -9,5 +9,7 @@ namespace FashionHeaven.Infrastructure.Data.Models
          [MaxLength(MaxLenghtColourName)]
         public string ColourName { get; set; } = string.Empty;
 
+       
+
     }
 }

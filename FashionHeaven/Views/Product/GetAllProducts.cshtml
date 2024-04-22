@@ -1,28 +1,75 @@
 ﻿
-@model IEnumerable<ProductViewModel>
+@model PeginatedList<ProductViewModel>
 @inject IProductService products;
-@Html.RenderPartialAsync("_MenuFilter",await products.ShowAllCategoryNamesAsync());
+ <partial name="_MenuFilter" model="@await products.ShowAllCategoryNamesAsync()"/>
+@{
+    int genderId = Model.Items.FirstOrDefault().GenderId;
+}
 
 <a type="button" class="btn btn-primary" asp-controller="Product" asp-action="RemoveFilter">Remove Filters</a>
 
-@if (@Model.Any())
+@if (Model.Items.Any())
 {
-    @foreach (var product in Model)
-    {
-        <div class="card" style="width: 18rem;">
-            <img src="@product.ImageUrl" class="card-img-top" alt="Imah edna mq4ta">
-            <div class="card-body">
-                <h5 class="card-title">@product.ProductName</h5>
-                <p class="card-text">@product.ProductPrice</p>
-
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var product in Model.Items)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.ProductName</h5>
+                        <p class="card-text">$@product.ProductPrice</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary">Add to Cart</button>
+                    </div>
+                    <div class="card-footer">
+                        <a type="button" asp-action="ViewProductDetails" asp-route-id = "@product.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    }
-    
-
-
-
-
+        }
+    </div>
 }
-
+else
+{
+    <p>No products available.</p>
+}
+<div class="row">
+    <div class="col-md-6">
+        <!-- Content for the first column -->
+    </div>
+    <div class="col-md-6">
+        <nav>
+            <ul class="pagination justify-content-end">
+                <li class="page-item" @(Model.PageIndex==1 ? "disabled":"")>
+                    <a class="page-link text-black" asp-action="GetAllProducts" asp-route-pageNumber="1" asp-route-genderId="@genderId">
+                        <span>First</span>
+                    </a>
+                </li>
+                <li class="page-item" @(Model.HasPreviousPage ? "disabled" : "")>
+                    <a class="page-link text-black" asp-action="GetAllProducts" asp-route-pageNumber="@Model.PageIndex-1" asp-route-genderId="@genderId">
+                        <span>Previous</span>
+                    </a>
+                </li>
+               @for (int i = 1; i <=Model.TotalPages; i++)
+                {
+                    <li class="page-item" @(Model.PageIndex==i ? "active":"")>
+                        <a class="page-link text-black" asp-action="GetAllProducts" asp-route-pageNumber="@i" asp-route-genderId="@genderId">@i</a>
+                    </li>
+                }
+                <li class="page-item" @(Model.HasNextPage ? "":"disabled")>
+                    <a class="page-link text-black" asp-action="GetAllProducts" asp-route-pageNumber="@Model.PageIndex+1" asp-route-genderId="@genderId">
+                        <span>Next</span>
+                    </a>
+                </li>
+                <li class="page-item" @(Model.PageIndex==Model.TotalPages ? "disabled":"")>
+                    <a class="page-link text-black" asp-action="GetAllProducts" asp-route-pageNumber="@Model.TotalPages" asp-route-genderId="@genderId">
+                        <span>Last</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
 

@@ -7,7 +7,7 @@ using System.Reflection.Emit;
 
 namespace FashionHeaven.Infrastructure.Data
 {
-    public class FashionHeavenContext : IdentityDbContext
+    public class FashionHeavenContext : IdentityDbContext<ApplicationUser>
     {
         public FashionHeavenContext(DbContextOptions<FashionHeavenContext> options)
             : base(options)
@@ -22,9 +22,8 @@ namespace FashionHeaven.Infrastructure.Data
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new ProductGenderConfiguration());
             builder.ApplyConfiguration(new ProductItemConfiguration());
-     
             builder.ApplyConfiguration(new SizeConfiguration());
-            builder.ApplyConfiguration(new ProductImageConfiguration());
+            builder.ApplyConfiguration(new ProductItemSizeColourConfiguration());
             base.OnModelCreating(builder);
         }
 
@@ -38,8 +37,6 @@ namespace FashionHeaven.Infrastructure.Data
        
         public DbSet<Size> Sizes { get; set; }
        
-        public DbSet<ProductImage> ProductImages { get; set; }
-
-
+        public DbSet<ProductItemSizeColours> ProductsSizesColours { get; set; }
     }
 }

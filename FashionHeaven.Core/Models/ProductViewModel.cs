@@ -10,6 +10,7 @@ namespace FashionHeaven.Core.Models
 {
     public class ProductViewModel
     {
+        public int Id { get; set; }
         public string  ImageUrl { get; set; } = string.Empty;
 
         public string ProductPrice { get; set; } = string.Empty;
