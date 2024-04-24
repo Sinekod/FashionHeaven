@@ -34,9 +34,11 @@ namespace FashionHeaven.Core.Contracts
 
         public Task<DescriptionProductViewModel> GetDetailForProduct(int id);
 
-        public Task<ProductItem> CheckProductItemExist(int id);
-
+        public Task<bool> CheckProductItemExistAsync(int id);
+        public Task<bool> CheckProductColorSizeExist(int id,int colourId,int sizeId);
         public Task<IEnumerable<ColourViewModel>> GetColoursForTheCurrentProduct(int id);
         public Task<IEnumerable<SizeViewModel>> GetSizesForCurrentProduct(int id);
+
+        
     }
 }

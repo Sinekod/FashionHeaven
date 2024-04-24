@@ -36,45 +36,48 @@
                             </div>
                             <p>@Model.Brand</p>
                             <p>@Model.Description</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label asp-for="@Model.SizeId" class="form-label-add-edit">Select Size</label>
-                                    <select asp-for="@Model.SizeId" class="form-control" aria-required="true">
-                                        <option disabled selected value="">Select Size...</option>
-                                        @foreach (var size in Model.Sizes)
-                                        {
-                                            <option value="@size.Id">@size.SizeName</option>
-                                        }
-                                    </select>
-                                    <span asp-validation-for="@Model.SizeId" class="text-danger"></span>
+                            <form asp-controller="Cart" asp-action="AddCartItem" class="display-flex">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label asp-for="@Model.SizeId" class="form-label-add-edit">Select Size</label>
+                                        <select asp-for="@Model.SizeId" class="form-control" aria-required="true">
+                                            <option disabled selected  value="">Select Size...</option>
+                                            @foreach (var size in Model.Sizes)
+                                            {
+                                                <option value="@size.Id">@size.SizeName</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="@Model.SizeId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label asp-for="@Model.ColourId" class="form-label-add-edit">Select Colour</label>
+                                        <select asp-for="@Model.ColourId"  class="form-control" aria-required="true">
+                                            <option as disabled selected value="">Select Colour...</option>
+                                            @foreach (var colour in Model.Colours)
+                                            {
+                                                <option value="@colour.Id">@colour.ColourName</option>
+                                            
+                                            }
+                                        </select>
+                                        <span asp-validation-for="@Model.ColourId" class="text-danger"></span>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <label asp-for="@Model.ColourId" class="form-label-add-edit">Select Colour</label>
-                                    <select asp-for="@Model.ColourId" class="form-control" aria-required="true">
-                                        <option disabled selected value="">Select Colour...</option>
-                                        @foreach (var colour in Model.Colours)
-                                        {
-                                            <option value="@colour.Id">@colour.ColourName</option>
-                                        }
-                                    </select>
-                                    <span asp-validation-for="@Model.ColourId" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="product-count">
-                                <label for="size">Quantity</label>
-                                <form action="#" class="display-flex">
-                                    
+                                <div class="product-count">
+                                    <label for="size">Quantity</label>
+
+
                                     <input type="text" name="quantity" value="1" class="qty">
-                                   
-                                </form>
-                                <a href="#" class="round-black-btn">Add to Cart</a>
-                            </div>
+
+
+                                    <button asp-route-id="@Model.id" asp-route-colourId="@Model.ColourId" asp-route-sizeId ="@Model.SizeId" type="submit" class="round-black-btn">Add to Cart</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-       
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

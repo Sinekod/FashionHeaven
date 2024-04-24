@@ -12,13 +12,21 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped<IProductService,ProductService>();
+            services.AddScoped<ICartService, CartService>();
             services.AddSession(options=>
             {
                 options.Cookie.Name = "GenderId";
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.IsEssential = true;
 
-            }) ;
+            });
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "ShoppingCart";
+                options.IdleTimeout = TimeSpan.FromHours(24);
+                options.Cookie.IsEssential = false;  
+
+            });
             return services;
         }
 

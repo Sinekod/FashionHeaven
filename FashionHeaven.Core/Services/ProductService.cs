@@ -216,11 +216,8 @@ namespace FashionHeaven.Core.Services
             return modelDescription;
         }
 
-        public async Task<ProductItem> CheckProductItemExist(int id)
-        {
-
-            return null;
-        }
+        public async Task<bool> CheckProductItemExistAsync(int id) => await context.ProductItems.AnyAsync(p => p.Id == id);
+    
 
         public async Task<IEnumerable<ColourViewModel>> GetColoursForTheCurrentProduct(int id)
         {
@@ -242,6 +239,17 @@ namespace FashionHeaven.Core.Services
                     SizeName = p.Size.SizeName,
 
                 }).ToListAsync();
+        }
+
+        public async Task<bool> CheckProductColorSizeExist(int id, int colourId, int sizeId)
+        {
+            bool check = false;
+             var product = await context.ProductsSizesColours.FirstOrDefaultAsync(p=>p.ProductItemId==id && p.ColourId==colourId && p.SizeId == sizeId);
+            if (product == null)
+            {
+                return check;
+            }
+             return true;
         }
     }
 }
